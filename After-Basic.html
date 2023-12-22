@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afte Basic of function</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // Rest parameters is a parameter that allows a function any number of argument as array
+        // Eg:
+        function collectThing(x, ...y) {
+            // when we give three dot '...' it becomes a rest parameter
+            // Funcrtion definition only can have one rest parameter
+            // It must be last argument
+
+            console.log(x);
+            console.log(y);
+
+        }
+        // collectThing(1,2,3,4,5,34,3,322,2);
+
+
+        // Arrow or Fat arrow function
+        const add = (a, b) => {
+            return a + b;
+        }
+        // console.log(add(1, 2));
+
+        //OR
+        // If there is only one line execution then we can use
+        const sum = (r, s) => r + s;
+        // console.log(sum(6, 9));
+
+        // Nested Function : means using another function inside a function 
+        function outer() {
+            // console.log('outer');
+            function inner() {
+                // console.log('inner');
+            }
+            inner();
+        }
+        outer();
+
+        // Function Scopes
+        // Ruules:
+        // 1.variable that are defined inside the function will not be accessed 
+        // anywhere outside the function.
+        // 2. A function can access all variable inside the scope it is define.
+
+        // It is also applicable in nested function i.e inner function can
+        // access outer variables but outter function cannot access
+        // inner function variable.
+
+
+        // Closure 
+
+        // Nested function is closure
+        // inner function is closure
+        // EG:
+        function out_most(x) {
+            function inner_most(y) {
+                return x + y;
+            }
+            return inner_most;
+        }
+        const outReturn = out_most(10);
+        // console.log(outReturn);
+        // console.log(outReturn(2));
+
+        // CallBack function
+        // A call back function is a function passed 
+        // as an argument(parameter) to another function and executed 
+        // inside the parent function.
+        // EG:
+        function foo(bar) {
+            bar(); // this is a function know call back
+        }
+
+        foo(function () { // the function doesn't use any name and it is called anonymous function
+            // console.log("Hello bar");
+        });
+
+        // so we create a function name:foo and inside para meter of foo
+        //  we create a bar which is also funcito and we pass Hello bar to bar function
+
+        // Why it is called callback
+        // EG:
+        let isNight = false;
+        let isDay = true;
+        function nice(food) {
+            if (isNight) {
+                food();
+            }
+            if (isDay) {
+                food();
+            }
+        }
+
+        // nice(function() {
+        //     console.log('good food');
+        // })
+        // nice(function() {
+        //     console.log('nice food');
+        // })
+
+
+        // Higher Order Function (HOF): it takes one or more function as argument
+        // It may return a function.
+        // map, filter, reduce are higher order functions.
+
+        // EG:
+        function getCapture(camera) {
+            camera();
+        }
+        getCapture(function () {
+            // console.log("Canon");
+        })
+
+        function returnFn() {
+            return function () {
+                // console.log('returning');
+            }
+        }
+        // const fn = returnFn();
+        // fn();
+
+
+        //pure function
+        function sayHello(name) {
+            return `Hello ${name}`
+        }
+        // console.log(sayHello('Roshan'));
+
+        // OR
+        let greeting = 'Hi'
+        function printMessage(fname){
+            return `${greeting} ${fname}`;
+        }
+        // console.log(printMessage('Roshan'))
+
+        //IIFE (Immediately Invoked Function Expression) : that where code is excuted
+        // immediately after execution
+        //Eg:
+
+        (function () {
+            // console.log('IIFE');
+        })()
+
+
+
+
+    </script>
+</body>
+
+</html>
